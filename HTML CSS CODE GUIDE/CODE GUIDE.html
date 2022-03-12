@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        html / css dersleri - m4xC0D3R
+    </title>
+
+    <div class="heading" id="toc">
+        <h2>İçindekiler</h2>
+      </div>
+      <div class="section toc">
+        <div class="col">
+          <h4><a href="#html">HTML</a></h4>
+          <ul>
+            <li><a href="#html-yazim-kurallari">Yazım kuralları</a></li>
+            <li><a href="#html-doctype">HTML5 doctype</a></li>
+            <li><a href="#html-dil">Dil özniteliği</a></li>
+            <li><a href="#html-karakter-kodlamasi">Karakter kodlaması</a></li>
+            <li><a href="#html-ie-uyumluluk-modu">Internet Explorer uyumluluk modu</a></li>
+            <li><a href="#html-css-ve-javascript">CSS ve JavaScript yerleştirmeleri</a></li>
+            <li><a href="#html-pratiklik">Pratiklik önemli</a></li>
+            <li><a href="#html-oznitelik-siralamasi">Öznitelik sıralaması</a></li>
+            <li><a href="#html-boolean-oznitelikler">Boolean öznitelikler</a></li>
+            <li><a href="#html-kodunu-sadelestirmek">HTML kodunu sadeleştirmek</a></li>
+            <li><a href="#html-javascript">JavaScript ile oluşturulmuş HTML kodu</a></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4><a href="#css">CSS</a></h4>
+          <ul>
+            <li><a href="#css-yazim-kurallari">CSS yazım kuralları</a></li>
+            <li><a href="#css-tanimlama-sirasi">Tanımlama sırası</a></li>
+            <li><a href="#css-import-kullanmayin">@import kullanmayın</a></li>
+            <li><a href="#css-medya-sorgulari">Medya sorguları</a></li>
+            <li><a href="#css-onekli-ozellikler">Önekli özellikler</a></li>
+            <li><a href="#css-tek-satirlik-tanimlamalar">Tek satırlık tanımlamalar</a></li>
+            <li><a href="#css-kisaltilmis-notasyon">Kısaltılmış notasyon</a></li>
+            <li><a href="#css-yuvalama">Less ve Sass yuvalamaları</a></li>
+            <li><a href="#css-hesaplamalar">Less ve Sass hesaplamaları</a></li>
+            <li><a href="#css-yorumlar">Yorumlar</a></li>
+            <li><a href="#css-siniflar">Sınıflar</a></li>
+            <li><a href="#css-seciciler">Seçiciler</a></li>
+            <li><a href="#css-organizasyon">Organizasyon</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      
+      <div class="section" id="golden-rule">
+        <div class="col">
+          <h2>Altın kural</h2>
+          <p>İster buradaki, ister size ait olan, kabul edilmiş kuralları her zaman iyileştirmeye çalışın. Küçük ya da büyük farketmez, neyin yanlış olduğunu söyleyin. Bu Kod Rehberine eklemeler yapmak ya da katkıda bulunmak için lütfen <a href="https://github.com/mdo/code-guide/issues/new">GitHub üstünde bir konu açın</a>.</p>
+        </div>
+        <div class="col">
+          <blockquote>
+            <p>Kodun her satırı, tek bir kişi tarafından yazılmış gibi görünmelidir, katkıda bulunanların sayısı bir şeyi değiştirmez.</p>
+          </blockquote>
+        </div>
+      </div>
+      
+      
+      
+      <div class="heading" id="html">
+        <h2>HTML</h2>
+      </div>
+      
+      <div class="section" id="html-yazim-kurallari">
+        <div class="col">
+          <h3>Yazım kuralları</h3>
+          <ul>
+            <li>İki boşluktan oluşan tablar kullanın - bu kullanım, kod formatlayıcıların her ortamda aynı davranmasını garantilemenin tek yoludur.</li>
+            <li>Yuvalanmış elemanlar girintili olmalıdır (iki boşlukla).</li>
+            <li>Özniteliklerde asla tek tırnak kullanmayın, her zaman çift tırnak kullanın.</li>
+            <li>Kendiliğinen kapanan elemanlarda bölü çizgisini kullanmayın - <a href="http://dev.w3.org/html5/spec-author-view/syntax.html#syntax-start-tag">HTML5 şartnamesi</a> bunun isteğe bağlı olduğunu söylüyor.</li>
+            <li>İsteğe bağlı kapatma etiketlerini ihmal etmeyin (örneğin <code>&lt;/li&gt;</code> ya da <code>&lt;/body&gt;</code>).</li>
+          </ul>
+        </div>
+        <div class="col">
+          {% highlight html %}{% include html/syntax.html %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="html-doctype">
+        <div class="col">
+          <h3>HTML5 doctype</h3>
+          <p>Bu basit doctype ifadesini her HTML sayfasının başında kullanarak mümkün olan tüm tarayıcılarda standart modun kullanılmasını ve daha tutarlı çıktılar üretilmesini sağlamaya çalışın.</p>
+        </div>
+        <div class="col">
+          {% highlight html %}{% include html/doctype.html %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="html-dil">
+        <div class="col">
+          <h3>Dil özniteliği</h3>
+          <p>HTML5 şartnamesi diyor ki:</p>
+          <blockquote>
+            <p>Geliştiricilerin kök html elemanına lang özniteliğini vererek dokümanın dilini belirtmeleri önerilir. Bu kullanım, metni konuşmaya çeviren araçların hangi telaffuzu kullanacaklarını beliremelerine, çeviri araçlarının hangi kuralları kullanacaklarını belirlemelerine, vb., yardımcı olur.</p>
+          </blockquote>
+          <p><a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-html-element">Şartnamede</a> <code>lang</code> özniteliği hakkında daha fazla bilgi edinebilirsiniz.</p>
+          <p>Sitepoint'teki <a href="http://reference.sitepoint.com/html/lang-codes">dil kodları listesine</a> de göz atabilirsiniz.</p>
+        </div>
+        <div class="col">
+          {% highlight html %}{% include html/lang.html %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="html-ie-uyumluluk-modu">
+        <div class="col">
+          <h3>IE uyumluluk modu</h3>
+          <p>Internet Explorer, doküman uyumluluk modu <code>&lt;meta&gt;</code> tagını özelleştirerek, tarayıcının çıktı üretirken hangi IE sürümünü kullanacağını belirtmemize olanak sağlar. Şartlar aksini gerektirmediği sürece en doğru olan, <strong>edge modunu</strong> kullanarak en son desteklenen sürümün kullanılmasını istemektir.</p>
+          <p>Detaylı bilgi için, <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge-e">bu harika Stack Overflow makalesini okuyun</a>.</p>
+        </div>
+        <div class="col">
+          {% highlight html %}{% include html/ie-compatibility-mode.html %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="html-karakter-kodlamasi">
+        <div class="col">
+          <h3>Karakter kodlaması</h3>
+          <p>Doğru bir karakter kodlaması kullanarak, hızlı ve kolay bir şekilde, içeriğinizin düzgün çıktılanmasını sağlayın. Bunu yaparken (&amp;raquo;, &amp;copy;, gibi) özel HTML öğeleri yerine karşılıkları olan özel karakterleri kullanmak isterseniz, bunları destekleyen bir karakter kodlaması (genellik UTF-8) kullanabilirsiniz.</p>
+        </div>
+        <div class="col">
+          {% highlight html %}{% include html/encoding.html %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="html-css-ve-javascript">
+        <div class="col">
+          <h3>CSS ve JavaScript yerleştirmeleri</h3>
+          <p>İlgili HTML5 şartnamelerine göre, CSS ve JavaScript dosyalarını/kodlarını yerleştirirken <code>type</code> özniteliğinin değerini <code>text/css</code> ve <code>text/javascript</code> olarak belirtmeye gerek yok; çünkü bu değerler, ilgili html etiketleri için önceden tanımlanmış değerler.</p>
+          <h4>HTML5 şartname linkleri</h4>
+          <ul>
+            <li><code>link</code> <a href="http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-link-element">kullanımı</a></li>
+            <li><code>style</code> <a href="http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-style-element">kullanımı</a></li>
+            <li><code>script</code> <a href="http://www.w3.org/TR/2011/WD-html5-20110525/scripting-1.html#the-script-element">kullanımı</a></li>
+          </ul>
+        </div>
+        <div class="col">
+          {% highlight html %}{% include html/style-script.html %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="html-pratiklik">
+        <div class="col">
+          <h3>Pratiklik önemli</h3>
+          <p>HTML standartlarını ve anlamlılığı korumaya çalışın fakat pratikliği göz ardı etmeyin. Mümkün olduğu sürece, kodunuzdaki karmaşıklığı en aza indirin.</p>
+        </div>
+      </div>
+      
+      <div class="section" id="html-oznitelik-siralamasi">
+        <div class="col">
+          <h3>Öznitelik sıralaması</h3>
+          <p>Kodun okunurluğunu artırmak için HTML öznitelikleri bu belirli sırada gelmelidir.</p>
+          <ul>
+            <li><code>class</code></li>
+            <li><code>id</code>, <code>name</code></li>
+            <li><code>data-*</code></li>
+            <li><code>src</code>, <code>for</code>, <code>type</code>, <code>href</code>, <code>value</code></li>
+            <li><code>title</code>, <code>alt</code></li>
+            <li><code>aria-*</code>, <code>role</code></li>
+          </ul>
+          <p><code>class</code> özniteliği, yeniden kullanılabilen harika bileşenler oluşturur, bu nedenle önce gelir. <code>id</code> özniteliği ise daha spesifiktir ve daha az kullanılmalıdır (örneğin sayfa içinde yer imi tanımlarken), bu nedenle ikinci sıradadır.</p>
+        </div>
+        <div class="col">
+          {% highlight html %}{% include html/attribute-order.html %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="html-boolean-oznitelikler">
+        <div class="col">
+          <h3>Boolean öznitelikler</h3>
+          <p>Boolean özniteliklerin bir değer atanmaya ihtiyacı yoktur. XHTML, boolean özniteliklere bir değer atanmasını zorunlu kılar ama HTML5'te böyle bir zorunluluk yoktur.</p>
+          <p>Daha detaylı bilgi için <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/common-microsyntaxes.html#boolean-attributes">WhatWG'nin boolean öznitelikler bölümüne</a> bakalım:</p>
+          <blockquote>
+            <p>Bir eleman üzerinde bir boolean niteliğin varlığı <code>true</code> değerini temsil eder ve niteliğin yokluğu <code>false</code> değerini temsil eder.</p>
+          </blockquote>
+      
+          <p>Eğer bir öznitelik değeri atamak <em>zorundaysanız</em> -<strong>ki değilsiniz</strong>- WhatWG'nin prensiplerini dikkate alın:</p>
+          <blockquote>
+            <p>Eğer özniteliğe bir değer verildiyse, bu değer ya boş bir string olmalı ya da öznitelik adının kendisi olmalı, başında veya sonunda boşluk olmadan.</p>
+          </blockquote>
+          <p><strong>Kısacası bir değer atamayın.</strong></p>
+        </div>
+        <div class="col">
+          {% highlight html %}{% include html/boolean-attributes.html %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="html-kodunu-sadelestirmek">
+        <div class="col">
+          <h3>HTML kodunu sadeleştirmek</h3>
+          <p>HTML yazarken, gereksiz üst eleman kullanmaktan kaçının. Çoğu zaman bu, iterasyon ve yeniden düzenleme gerektirir ama daha az HTML üretir. Şu örneği ele alalım:</p>
+        </div>
+        <div class="col">
+          {% highlight html %}{% include html/reducing-markup.html %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="html-javascript">
+        <div class="col">
+          <h3>JavaScript ile oluşturulmuş HTML kodu</h3>
+          <p>JavaScript içinde yazılmış HTML kodları, içeriğin bulunmasını/düzenlenmesini zorlaştırır ve performansını da düşürür. Mümkün olduğunca bundan kaçının.</p>
+          <p><small><strong>Çevirmen Notu:</strong> Muhtemelen <a href="http://getbootstrap.com">Bootstrap</a> kütüphanesini kullanmış ya da en azından duymuşsunuzdur. Bu makalenin yazarı olan <a href="https://github.com/mdo">@mdo</a>, Bootstrap'ın geliştiricilerindendir. Bootstrap'ın JavaScript kodlarına baktığımızda neredeyse hiç HTML kodu üretilmediğini ve düzgün çalışmak için belirli bir HTML yapısına ihtiyaç duyduğunu görürüz. Yani kendisi bu nasihate başarılı bir şekilde uymuş.</small></p>
+        </div>
+      </div>
+      
+      
+      
+      <div class="heading" id="css">
+        <h2>CSS</h2>
+      </div>
+      
+      <div class="section" id="css-yazim-kurallari">
+        <div class="col">
+          <h3>Yazım kuralları</h3>
+          <ul>
+            <li>İki boşluktan oluşan tablar kullanın - bu kullanım, kod formatlayıcıların her ortamda aynı davranmasını garantilemenin tek yoludur.</li>
+            <li>Seçicileri gruplandırırken, her bir seçicinin tek bir satırda olmasını sağlayın.</li>
+            <li>Okunabilirliği arttırmak için tanımlama bloklarının başlangıcındaki küme parantezinden önce bir boşluk bırakın.</li>
+            <li>Tanımlama bloklarının bitimindeki küma parantezini yeni bir satırda konumlandırın.</li>
+            <li>Her bir tanımlama için <code>:</code> işaretinden sonra bir boşluk bırakın.</li>
+            <li>Daha doğru hata raporlaması için her bir tanımlama, kendi satırında olmalıdır.</li>
+            <li>Tüm tanımlamaları noktalı virgül ile bitirin. Son tanımlamada kullanılacak olan noktalı virgül isteğe bağlıdır ama kullanmazsanız kodunuz hataya sebep olmaya daha meyilli hale gelir.</li>
+            <li>Virgülle ayrılan değerler, virgülden sonra bir boşluk bırakılarak yazılmalıdır (örneğin <code>box-shadow</code>).</li>
+            <li><code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, <code>hsla()</code> ve <code>rect()</code> <em>komutları içinde</em> boşluk kullanmayın. Bu kullanım, virgülle ayrılan değerler içindeki (virgülsüz) renk tanımlamalarını ayırt etmekte yardımcı olur.</li>
+            <li>Ondalıklı özellik değerlerinin başında sıfır kullanmayın (örneğin <code>0.5</code> yerine <code>.5</code> ve <code>-0.5px</code> yerine de <code>-.5px</code> kullanın).</li>
+            <li>Bütün onaltılık değerleri küçük harfle yazın; örneğin <code>#fff</code>. Küçük harfler daha benzersiz olma eğiliminde olduklarından, belgeyi tararken ayırt etmek çok daha kolay olur.</li>
+            <li>Mümkün olduğunda onaltılık değerleri kısa formatta kullanın; örneğin <code>#ffffff</code> yerine <code>#fff</code> kullanın.</li>
+            <li>Seçicilerin içinde kullanılan öznitelik değerlerini çift tırnak içine alın; örneğin <code>input[type="text"]</code>. <a href="http://mathiasbynens.be/notes/unquoted-attribute-values#css">Çift tırnak kullanımı sadece bazı durumlarda seçime bağlıdır</a>, tutarlılık için  her zaman çift tırnak kullanmak iyi bir uygulamadır.</li>
+            <li>Sıfıra eşit olan değerlerde birim belirtmekten kaçının; örneğin <code>margin: 0px;</code> yerine <code>margin: 0;</code> kullanın.</li>
+          </ul>
+          <p>Kafanızda burada kullanılan terimlerle alakalı soru işaretleri mi var? Vikipedi'deki <a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets#Syntax">Cascading Style Sheets makalesinin Syntax bölümüne</a> bakın.</p>
+        </div>
+        <div class="col">
+          {% highlight css %}{% include css/syntax.css %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-tanimlama-sirasi">
+        <div class="col">
+          <h3>Tanımlama sırası</h3>
+          <p>İlişkili özellik tanımlamaları aşağıdaki sırayla gruplanmalıdır:</p>
+          <ol>
+            <li>Posizyonlama</li>
+            <li>Box model</li>
+            <li>Tipografi</li>
+            <li>Görsellik</li>
+          </ol>
+          <p>Pozisyonlama önce gelir, çünkü bir eleman pozisyonlandığında ilgili element, dokümanın normal sıralamasından çıkarılabilir ve bu da box model ile ilişkili stillerin yeniden hesaplanmasına neden olur. Sonrasında box model, bileşenin boyutlarını ve konumunu netleştirmek için gelir.</p>
+          <p>Bileşenin içinde yer alan diğer tüm özellikler önceki iki bölümü (pozisyonlama ve box model) etkilemeden en sona eklenir.</p>
+          <p>Özelliklerin ve özellik sıralamalarının tam bir listesi için lütfen <a href="http://twitter.github.com/recess">Recess</a>'e bakın.</p>
+        </div>
+        <div class="col">
+          {% highlight css %}{% include css/declaration-order.css %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-import-kullanmayin">
+        <div class="col">
+          <h3><code>@import</code> kullanmayın</h3>
+          <p><code>&lt;link&gt;</code> ile karşılaştırıldığında, <code>@import</code> yavaştır, ekstra sorgu gerektirir ve beklenmeyen sorunlara sebep olabilir. Bunlardan kaçınmak için farklı bir yaklaşım tercih edin:</p>
+          <ul>
+            <li>Birden fazla <code>&lt;link&gt;</code> elemanı kullanın</li>
+            <li>Sass ve Less gibi bir ön işlemci kullanarak CSS'inizi tek bir dosyada birleştirin</li>
+            <li>Rails, Jekyll veya diğer ortamlarda sunulan özelliklerle CSS dosyalarınızı bir düzene sokun</li>
+          </ul>
+          <p>Daha fazla bilgi için <a href="http://www.stevesouders.com/blog/2009/04/09/dont-use-import/">Steve Souders'ın makalesini okuyun</a>.</p>
+        </div>
+        <div class="col">
+          {% highlight html %}{% include css/import.html %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-medya-sorgulari">
+        <div class="col">
+          <h3>Medya sorguları</h3>
+          <p>Medya sorgularını, mümkün olduğu müddetçe ilgili CSS kural gruplarının yakınına yerleştirin. Tüm medya sorgularını tek bir dosyada ya da CSS dosyasının en sonunda paketlemeyin. Aksi taktirde insanların bu kodları gözden kaçırması ihtimalini arttırmış olursunuz. İşte tipik bir kulalnım:</p>
+        </div>
+        <div class="col">
+          {% highlight css %}{% include css/media-queries.css %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-onekli-ozellikler">
+        <div class="col">
+          <h3>Önekli özellikler</h3>
+          <p>Önekli özellikleri kullanırken her bir özelliğe girinti verin, öyle ki alttaki ve üstteki özellikler kolayca aynı anda (multi-line) düzenlenebilsin.</p>
+          <p>Textmate'de <strong>Text &rarr; Edit Each Line in Selection</strong> (&#8963;&#8984;A) kullanın. Sublime Text 2'de <strong>Selection &rarr; Add Previous Line</strong> (&#8963;&#8679;&uarr;) ve <strong>Selection &rarr;  Add Next Line</strong> (&#8963;&#8679;&darr;) kullanın</p>
+        </div>
+        <div class="col">
+          {% highlight css %}{% include css/prefixed-properties.css %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-tek-satirlik-tanimlamalar">
+        <div class="col">
+          <h3>Tek satırlık tanımlamalar</h3>
+          <p>Bri kural setinin <strong>sadece bir tanımlama</strong> içerdiği durımlarda, okunabilirlik ve hızlı düzenlenebilirlik için satır sonlarını silmeyi düşünün. Birden fazla tanımlama içeren kural setlerinde her tanımlama ayrı bir satıra yazılmalıdır.</p>
+          <p>Buradaki anahtar faktör hata yakalamadır. Örneğin CSS validator 183. satırda bir hata yazım hatası olduğunu söylüyor. Tek tanımlamalı bir kural setinde sorun yok, hatayı kaçırmazsınız. Birden fazla tanımlamalı bir sette ise her bir tanımlamayı ayrı satıra almak, akıl sağlığınız için bir gerekliliktir.</p>
+        </div>
+        <div class="col">
+          {% highlight css %}{% include css/single-declarations.css %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-kisaltilmis-notasyon">
+        <div class="col">
+          <h3>Shorthand notation</h3>
+          <p>Strive to limit use of shorthand declarations to instances where you must explicitly set all the available values. Common overused shorthand properties include:</p>
+          <ul>
+            <li><code>padding</code></li>
+            <li><code>margin</code></li>
+            <li><code>font</code></li>
+            <li><code>background</code></li>
+            <li><code>border</code></li>
+            <li><code>border-radius</code></li>
+          </ul>
+          <p>Often times we don't need to set all the values a shorthand property represents. For example, HTML headings only set top and bottom margin, so when necessary, only override those two values. Excessive use of shorthand properties often leads to sloppier code with unnecessary overrides and unintended side effects.</p>
+          <p>The Mozilla Developer Network has a great article on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties">shorthand properties</a> for those unfamiliar with notation and behavior.</p>
+        </div>
+        <div class="col">
+          {% highlight css %}{% include css/shorthand.css %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-yuvalama">
+        <div class="col">
+          <h3>Nesting in Less and Sass</h3>
+          <p>Avoid unnecessary nesting. Just because you can nest, doesn't mean you always should. Consider nesting only if you must scope styles to a parent and if there are multiple elements to be nested.</p>
+        </div>
+        <div class="col">
+          {% highlight scss %}{% include css/nesting.scss %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-hesaplamalar">
+        <div class="col">
+          <h3>Operators in Less and Sass</h3>
+          <p>For improved readability, wrap all math operations in parentheses with a single space between values, variables, and operators.</p>
+        </div>
+        <div class="col">
+          {% highlight scss %}{% include css/operators.scss %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-yorumlar">
+        <div class="col">
+          <h3>Comments</h3>
+          <p>Code is written and maintained by people. Ensure your code is descriptive, well commented, and approachable by others. Great code comments convey context or purpose. Do not simply reiterate a component or class name.</p>
+          <p>Be sure to write in complete sentences for larger comments and succinct phrases for general notes.</p>
+        </div>
+        <div class="col">
+          {% highlight css %}{% include css/comments.css %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-siniflar">
+        <div class="col">
+          <h3>Class names</h3>
+          <ul>
+            <li>Keep classes lowercase and use dashes (not underscores or camelCase). Dashes serve as natural breaks in related class (e.g., <code>.btn</code> and <code>.btn-danger</code>).</li>
+            <li>Avoid excessive and arbitrary shorthand notation. <code>.btn</code> is useful for <em>button</em>, but <code>.s</code> doesn't mean anything.</li>
+            <li>Keep classes as short and succinct as possible.</li>
+            <li>Use meaningful names; use structural or purposeful names over presentational.</li>
+            <li>Prefix classes based on the closest parent or base class.</li>
+            <li>Use <code>.js-*</code> classes to denote behavior (as opposed to style), but keep these classes out of your CSS.</li>
+          </ul>
+          <p>It's also useful to apply many of these same rules when creating Sass and Less variable names.</p>
+        </div>
+        <div class="col">
+          {% highlight css %}{% include css/class-names.css %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-seciciler">
+        <div class="col">
+          <h3>Selectors</h3>
+          <ul>
+            <li>Use classes over generic element tag for optimum rendering performance.</li>
+            <li>Avoid using several attribute selectors (e.g., <code>[class^="..."]</code>) on commonly occuring components. Browser performance is known to be impacted by these.</li>
+            <li>Keep selectors short and strive to limit the number of elements in each selector to three.</li>
+            <li>Scope classes to the closest parent <strong>only</strong> when necessary (e.g., when not using prefixed classes).</li>
+          </ul>
+          <p>Additional reading:</p>
+          <ul>
+            <li><a href="http://markdotto.com/2012/02/16/scope-css-siniflar-with-prefixes/">Scope CSS classes with prefixes</a></li>
+            <li><a href="http://markdotto.com/2012/03/02/stop-the-cascade/">Stop the cascade</a></li>
+          </ul>
+        </div>
+        <div class="col">
+          {% highlight css %}{% include css/selectors.css %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-organizasyon">
+        <div class="col">
+          <h3>Organization</h3>
+          <ul>
+            <li>Organize sections of code by component.</li>
+            <li>Develop a consistent commenting hierarchy.</li>
+            <li>Use consistent white space to your advantage when separating sections of code for scanning larger documents.</li>
+            <li>When using multiple CSS files, break them down by component instead of page. Pages can be rearranged and components moved.</li>
+          </ul>
+        </div>
+        <div class="col">
+          {% highlight css %}{% include css/organization-comments.css %}{% endhighlight %}
+        </div>
+      </div>
+      
+      <div class="section" id="css-editor-prefs">
+        <div class="col">
+          <h3>Editor preferences</h3>
+          <p>Set your editor to the following settings to avoid common code inconsistencies and dirty diffs:</p>
+          <ul>
+            <li>Use soft-tabs set to two spaces.</li>
+            <li>Trim trailing white space on save.</li>
+            <li>Set encoding to UTF-8.</li>
+            <li>Add new line at end of files.</li>
+          </ul>
+          <p>Consider documenting and applying these preferences to your project's <code>.editorconfig</code> file. For an example, see <a href="https://github.com/twbs/bootstrap/blob/master/.editorconfig">the one in Bootstrap</a>. Learn more <a href="http://editorconfig.org">about EditorConfig</a>.</p>
+        </div>
+      </div>
